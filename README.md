@@ -1,26 +1,25 @@
 # Docker Templates
 ## Intro
-This repo is hosting some docker templates for the `Hacking-La 2.0` platform.
+Hacking-Lab 2.0 is a `CTF` and `Cyber Academy` education platform.  In HL 2.0 students can spin up their own and private docker service. A proprietary component called `docker-manager` takes care of spinning up the docker services. These docker instances (containers) can be started on-demand (multiple instances) or as singletons. The `docker manager` has many features and this repo will introduce the different  `use-cases`. This is important for HL 2.0 challenge developers. 
 
-## Why? 
-Hacking-Lab 2.0 is a `CTF` and `Cyber Academy` education platform.  In HL 2.0 students can spin up their own and private docker service. But there are many options available, how to setup a docker. For example
+## Docker Manager 
+There are many combinations how the `docker-manager` can spin up a service. In a CTF (capture-the-flag) environment, services may have a private flag or unique login credentials. May the docker shall be shared among other contestants or used as a single service per user. All these can be configured using the HL 2.0 `docker-manager`. 
 
-* docker with static ctf flag
-* docker with dynamic ctf flag
-* docker with static usernames and passwords
-* docker with dynamic usernames and passwords
-* docker instances running per user
-* docker instances running as singleton
+Configuration Examples:
+* docker with static or ctf flag
+* docker with static or dynamci usernames and passwords
+* docker instances running per user or once as a singleton
+* docker instances inheriting flags from the docker or create and provide one to the docker
+* docker instances via traefik load balancing or directly linked to a routeable ip address
+* docker instances sharing a docker network or isolated
 
-Thus, this repo shall help challenge and docker service devlopers creating nice and cool `Challenge Dockers` for the `HL 2.0` platform. 
+## Load Balancing
+The so-called `idocker` instances in `HL 2.0` are started, stopped and maintanced using `traefik` labels. If you experience an url with `idocker` in the `url`, this docker has been deployed with `traefik`
 
-## Docker Manager
-Hacking-Lab 2.0 is based on a proprietary docker-manager. This tool gives us the flexibility to run and start docker services in all sorts of combinations. 
-
-## Traefik
-Some docker instances in `HL 2.0` are started, stopped and maintanced using `traefik` labels. If you experience an url with `idocker` in the `url`, this docker has been deployed with `traefik`
 
 ## Direct Access
-Some docker instances in `HL 2.0` can be run directly with a public routable ip address. We use the ESX `macvlan` feature for this. However, if you see a `docker` with `rdocker` in the `url`, this docker has been started `without traefik` and is directly connected to a public ip address. This is required for all challenges with a direct tcp/udp port. 
+Some docker instances in `HL 2.0` can be run directly with a public routeable ip address. We use the ESX `macvlan` feature for this. However, if you see a `docker` with `rdocker` in the `url`, this docker has been started `without traefik` and is directly connected to a public ip address. This is required for all challenges with a direct tcp/udp port. 
+
+
 
 

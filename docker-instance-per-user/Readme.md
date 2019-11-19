@@ -5,7 +5,8 @@ This template has the following properties
 3. docker-managers takes care of credentials 
 4. ctf flag is disabled
 
-## Docker Configuration
+
+## Docker Service Configuration (used by `docker-manager`)
 ```
 {
   "6f0ea069-da21-402d-bd3a-39115b0b9cf1": {
@@ -39,8 +40,65 @@ This template has the following properties
 ```
 
 ## Video 
-[Video](../video/docker-manager-multi-instance-docker.mp4)
+[Docker Manager Multi-Instances](https://raw.githubusercontent.com/Hacking-Lab/docker-templates/master/video/docker-manager-multi-instance-docker.mp4)
 
 
-## Presentation in Video
-[PDF](docker-manager-per-user.pdf)
+## PDF
+[Docker-Manager Multi-Instances](docker-manager-per-user.pdf)
+
+
+## API Response from Docker Manager after  `startup`
+```
+{
+	"id": "2ce091f9-863f-4dde-9f79-ab5e39782840",
+	"schema": "",
+	"ipaddress": "",
+	"protocol": "",
+	"port": "",
+	"userId": "Ivan",
+	"expireTime": 1574168965463,
+	"fqdn": "2ce091f9-863f-4dde-9f79-ab5e39782840.idocker.hacking-lab.com",
+	"ipAccess": "nat",
+	"singleton": false,
+	"goldnugget": null,
+	"userattributes": {
+		"credentials": {
+			"username": "hacker",
+			"password": "compass"
+		}
+	}
+}
+``` 
+
+## API Status Request
+Status Request
+
+```
+curl -s --header "Authorization: Bearer <cut>" -k https://api.idocker.hacking-lab.com/api/v1/containers/2ce091f9-863f-4dde-9f79-ab5e39782840
+```
+
+Status Response 
+```
+{
+	"id": "2ce091f9-863f-4dde-9f79-ab5e39782840",
+	"schema": "",
+	"ipaddress": "",
+	"protocol": "",
+	"port": "",
+	"userId": "Ivan",
+	"expireTime": 1574169083921,
+	"fqdn": "2ce091f9-863f-4dde-9f79-ab5e39782840.idocker.hacking-lab.com",
+	"ipAccess": "nat",
+	"singleton": false,
+	"userattributes": {
+		"credentials": {
+			"username": "hacker",
+			"password": "compass"
+		}
+	},
+	"goldnugget": null
+}
+```
+
+
+
